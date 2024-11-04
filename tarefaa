@@ -1,0 +1,34 @@
+total = 0
+baixo = 0
+alto = 0
+pedido = 0
+pizza = ''
+extras = ['tomate', 'bacon', 'calabresa', 'mussarela', 'cebola']
+while True:
+    pedido += 1
+    total = 0  
+    pizza = input('informe M para média, P para pequena, ou G para grande: ')
+    if pizza == 'P':
+        total += 20
+    elif pizza == 'M':
+        total += 30
+    elif pizza == 'G':
+        total += 40
+    for item in extras:
+        if input(f'adicionar {item}? (sim/não): ') == 'sim':
+            total += 5
+    if input('deseja refrigerante? (sim/não): ') == 'sim':
+        total += 8
+    print('o total do pedido foi: R$', total)
+    if pedido == 1:
+        baixo = alto = total
+    else:
+        if total > alto:
+            alto = total
+        if total < baixo:
+            baixo = total
+    if input('deseja fazer um novo pedido? (sim/não): ') != 'sim':
+        break
+print('o pedido mais caro foi:', alto)
+print('o pedido mais barato foi:', baixo)
+print('o total de pedidos foi:', pedido)
